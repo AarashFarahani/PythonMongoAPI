@@ -21,7 +21,7 @@ def add_contact():
                 "contact" : user_contact
             })
         return dumps({'message' : 'SUCCESS'})
-    except Exception, e:
+    except Exception as e:
         return dumps({'error' : str(e)})
 
 @app.route("/get_all_contact", methods = ['GET'])
@@ -29,5 +29,8 @@ def get_all_contact():
     try:
         contacts = db.Contacts.find()
         return dumps(contacts)
-    except Exception, e:
+    except Exception as e:
         return dumps({'error' : str(e)})
+
+if __name__ == "__main__":
+    app.run()
